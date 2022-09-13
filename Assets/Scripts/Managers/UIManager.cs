@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ using DG.Tweening;
 public class UIManager : MonoBehaviour
 {
     public Image whiteEffect;
+    public Image exclamation;
     
     #region Singleton
     public static UIManager instance = null;
@@ -15,7 +17,12 @@ public class UIManager : MonoBehaviour
         if (instance == null) instance = this;
     }
     #endregion
-    
+
+    private void Start()
+    {
+        exclamation.transform.DOScale(1.2f, .25f).SetLoops(-1, LoopType.Yoyo);
+    }
+
     public void Fail()
     {
         whiteEffect.gameObject.SetActive(true);
